@@ -21,6 +21,14 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     const newWithdrawFieldString = withdrawField.value;
     const withdraw = parseFloat(newWithdrawFieldString);
 
+    // step-7
+    withdrawField.value = '';
+
+    if(isNaN(withdraw)){
+        alert('please provide a valid number');
+        return;
+    }
+
 
     // step-3
     const withdrawTOtalElement = document.getElementById('withdraw-total');
@@ -28,16 +36,22 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     const withdrawTotalString = withdrawTOtalElement.innerText;
     const withdrawTOtal = parseFloat(withdrawTotalString);
     
-    // step-4.
-
-    const currentWithdrawTotal = withdraw + withdrawTOtal;
-    withdrawTOtalElement.innerText = currentWithdrawTotal;
+    
 
     // step-5.
     const ballanceTotalElement = document.getElementById('Balance-total');
     const ballanceTotalString = ballanceTotalElement.innerText;
     const ballanceTotal = parseFloat(ballanceTotalString);
     
+   if(withdraw > ballanceTotal){
+        alert('Bar er Bank e eto taka nai');
+        return;
+   }
+
+   // step-4.
+
+   const currentWithdrawTotal = withdraw + withdrawTOtal;
+   withdrawTOtalElement.innerText = currentWithdrawTotal;
 
     // step-6.
     const newBallanceTotal = ballanceTotal - currentWithdrawTotal;
@@ -45,8 +59,6 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
     // step-6.5.
     ballanceTotalElement.innerText = newBallanceTotal;
 
-    // step-7
-
-    withdrawField.value = '';
+    
     
 })

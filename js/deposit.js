@@ -7,23 +7,30 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
     const newDepositAmount = parseFloat(newDepositAmountString)
 
 
+     // step-7
+     depositField.value = '';
+
+     if(isNaN(newDepositAmount)){
+         alert('please provide a valid number');
+         return;
+     }
+
     // step-3: get the current deposit total
     // for non-input(element other input, textarea) use innerText to get the text
     const depositTotalElement = document.getElementById('deposit-total');
     const previousDepositTotalString = depositTotalElement.innerText;
     const previousDepositTotal = parseFloat(previousDepositTotalString);
 
+    // step-5.
+    const ballanceTotalElement = document.getElementById('Balance-total');
+    const ballanceTotalString = ballanceTotalElement.innerText;
+    const ballanceTotal = parseFloat(ballanceTotalString);
+    
+
     // step-4 add number to set the deposit
     const currentDepositTotal = previousDepositTotal + newDepositAmount;
     // set the deposit total
     depositTotalElement.innerText = currentDepositTotal ;
-
-    // step-5: get ballance current total
-
-    const ballanceTotalElement = document.getElementById('Balance-total');
-
-    const ballanceTotalString = ballanceTotalElement.innerText;
-    const ballanceTotal = parseFloat(ballanceTotalString);
 
     // step-6: add newDepositAmount + ballanceTotal
 
